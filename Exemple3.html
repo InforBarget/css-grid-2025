@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-placement et Responsive</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        h2 {
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+
+        /* Auto-fill */
+        .container-fill {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        /* Auto-fit */
+        .container-fit {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        /* Galerie d'images responsive */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Grid auto-flow examples */
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-flow: dense;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .flow-item {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .flow-item.large {
+            grid-column: span 2;
+        }
+
+        .flow-item.tall {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Auto-placement et Layouts Responsives</h1>
+
+    <h2>1. Auto-fill (crée des colonnes même vides)</h2>
+    <div class="container-fill">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>2. Auto-fit (collapse les colonnes vides)</h2>
+    <div class="container-fit">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h2>3. Galerie d'images responsive (0 media query !)</h2>
+    <div class="gallery">
+        <img src="https://picsum.photos/400/300?random=1" alt="Image 1">
+        <img src="https://picsum.photos/400/300?random=2" alt="Image 2">
+        <img src="https://picsum.photos/400/300?random=3" alt="Image 3">
+        <img src="https://picsum.photos/400/300?random=4" alt="Image 4">
+        <img src="https://picsum.photos/400/300?random=5" alt="Image 5">
+        <img src="https://picsum.photos/400/300?random=6" alt="Image 6">
+    </div>
+
+    <h2>4. Grid-auto-flow: dense (masonry-like)</h2>
+    <div class="flow-container">
+        <div class="flow-item">1</div>
+        <div class="flow-item large">2 (large)</div>
+        <div class="flow-item">3</div>
+        <div class="flow-item tall">4 (tall)</div>
+        <div class="flow-item">5</div>
+        <div class="flow-item">6</div>
+        <div class="flow-item large">7 (large)</div>
+        <div class="flow-item">8</div>
+    </div>
+</body>
+
+</html>
