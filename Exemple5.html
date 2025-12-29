@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Template Areas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* Layout de page avec template areas */
+        .page-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header  header  header"
+                "sidebar content aside"
+                "footer  footer  footer";
+            gap: 1rem;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .header {
+            grid-area: header;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #f7fafc;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar li:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .content {
+            grid-area: content;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            line-height: 1.8;
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .aside {
+            grid-area: aside;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .aside h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .widget {
+            padding: 1rem;
+            margin: 1rem 0;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: #2d3748;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* Version responsive */
+        @media (max-width: 768px) {
+            .page-layout {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "content"
+                    "sidebar"
+                    "aside"
+                    "footer";
+            }
+        }
+
+        /* Code display */
+        .code-example {
+            background: #2d3748;
+            color: #68d391;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-layout">
+        <header class="header">
+            🎨 Mon Site avec Grid Template Areas
+        </header>
+
+        <nav class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li>🏠 Accueil</li>
+                <li>📝 Articles</li>
+                <li>💼 Portfolio</li>
+                <li>📧 Contact</li>
+                <li>ℹ️ À propos</li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h1>Bienvenue sur mon site !</h1>
+            <p>
+                Ce layout utilise <strong>grid-template-areas</strong>, ce qui rend le code
+                extrêmement lisible et maintenable. Regardez comme le CSS ressemble visuellement
+                à la structure de la page !
+            </p>
+
+            <div class="code-example">
+                grid-template-areas:<br>
+                &nbsp;&nbsp;"header&nbsp;&nbsp;header&nbsp;&nbsp;header"<br>
+                &nbsp;&nbsp;"sidebar&nbsp;content&nbsp;aside"<br>
+                &nbsp;&nbsp;"footer&nbsp;&nbsp;footer&nbsp;&nbsp;footer";
+            </div>
+
+            <p>
+                Chaque zone est nommée de manière sémantique, puis assignée avec
+                <code>grid-area: nom</code>. C'est parfait pour les layouts de pages complexes.
+            </p>
+
+            <h2>Responsive en un clin d'œil</h2>
+            <p>
+                Avec un seul media query, on réorganise complètement le layout en changeant
+                simplement la définition de grid-template-areas. Essayez de redimensionner
+                votre fenêtre pour voir la magie opérer !
+            </p>
+
+            <div class="code-example">
+                @media (max-width: 768px) {<br>
+                &nbsp;&nbsp;grid-template-areas:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"header"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"content"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"sidebar"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"aside"<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"footer";<br>
+                }
+            </div>
+        </main>
+
+        <aside class="aside">
+            <h2>Widgets</h2>
+            <div class="widget">📊 Statistiques</div>
+            <div class="widget">🔥 Tendances</div>
+            <div class="widget">💬 Commentaires</div>
+        </aside>
+
+        <footer class="footer">
+            <p>&copy; 2025 Infor'Barget - CSS Grid Template Areas Demo</p>
+            <p>Formateur certifié Qualiopi | Anthony</p>
+        </footer>
+    </div>
+</body>
+
+</html>
