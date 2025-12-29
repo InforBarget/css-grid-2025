@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positionnement Avancé CSS Grid</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        h2 {
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+
+        /* Exemple de positionnement basique */
+        .grid-basic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .grid-basic .item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .grid-basic .item-1 {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .grid-basic .item-2 {
+            grid-column: 3 / 5;
+            grid-row: 1 / 3;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .grid-basic .item-3 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 4;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        /* Dashboard Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr 1fr;
+            grid-template-rows: 60px 1fr 200px;
+            gap: 1rem;
+            height: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard .header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .dashboard .sidebar {
+            grid-row: 2 / 4;
+            background: #2d3748;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .dashboard .main-content {
+            grid-column: 2 / 4;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard .stats {
+            grid-column: 2 / 3;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .dashboard .chart {
+            grid-column: 3 / 4;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Exemple avec span */
+        .grid-span {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 80px;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .grid-span .item {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .grid-span .span-item-1 {
+            grid-column: 1 / span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .grid-span .span-item-2 {
+            grid-column: span 3;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Positionnement Avancé des Items</h1>
+
+    <h2>1. Positionnement avec grid-column et grid-row</h2>
+    <div class="grid-basic">
+        <div class="item item-1">Item 1<br>(col: 1/3, row: 1/2)</div>
+        <div class="item item-2">Item 2<br>(col: 3/5, row: 1/3)</div>
+        <div class="item item-3">Item 3<br>(col: 1/2, row: 2/4)</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+    </div>
+
+    <h2>2. Dashboard Layout Complexe</h2>
+    <div class="dashboard">
+        <div class="header">📊 Mon Dashboard</div>
+        <div class="sidebar">
+            <h3>Menu</h3>
+            <ul>
+                <li>🏠 Accueil</li>
+                <li>📈 Analytics</li>
+                <li>⚙️ Paramètres</li>
+                <li>👤 Profil</li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Contenu Principal</h2>
+            <p>Bienvenue dans votre dashboard. Ici s'affiche le contenu principal de votre application.</p>
+            <p>La sidebar occupe 2 rangées verticales, tandis que le contenu s'étend sur toute la largeur disponible.
+            </p>
+        </div>
+        <div class="stats">📊 Statistiques</div>
+        <div class="chart">📉 Graphiques</div>
+    </div>
+
+    <h2>3. Utilisation de SPAN</h2>
+    <div class="grid-span">
+        <div class="item span-item-1">Span 2 col<br>Span 2 row</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item span-item-2">Span 3 colonnes</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+    </div>
+
+    <div style="background: white; padding: 2rem; border-radius: 8px; margin-top: 2rem;">
+        <h3>💡 Astuces de positionnement</h3>
+        <ul style="line-height: 1.8;">
+            <li><strong>Nombres négatifs :</strong> <code>grid-column: 1 / -1</code> = de la première à la dernière
+                colonne</li>
+            <li><strong>Span :</strong> <code>grid-column: span 2</code> = s'étend sur 2 colonnes depuis sa position
+            </li>
+            <li><strong>Raccourci :</strong> <code>grid-area: row-start / col-start / row-end / col-end</code></li>
+        </ul>
+    </div>
+</body>
+
+</html>
