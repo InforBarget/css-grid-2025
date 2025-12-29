@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unité FR et Fonctions Grid</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        h2 {
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+
+        /* Exemple avec FR */
+        .container-fr {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Exemple avec repeat() */
+        .container-repeat {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Exemple mixte */
+        .container-mixed {
+            display: grid;
+            grid-template-columns: 200px repeat(3, 1fr) 150px;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Exemple avec minmax() */
+        .container-minmax {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Unités et Fonctions CSS Grid</h1>
+
+    <h2>1. L'unité FR (fraction)</h2>
+    <div class="container-fr">
+        <div class="item">1fr</div>
+        <div class="item">2fr (double)</div>
+        <div class="item">1fr</div>
+    </div>
+
+    <h2>2. Fonction repeat()</h2>
+    <div class="container-repeat">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+
+    <h2>3. Mixte : fixes + flexibles</h2>
+    <div class="container-mixed">
+        <div class="item">200px</div>
+        <div class="item">1fr</div>
+        <div class="item">1fr</div>
+        <div class="item">1fr</div>
+        <div class="item">150px</div>
+    </div>
+
+    <h2>4. Fonction minmax()</h2>
+    <div class="container-minmax">
+        <div class="item">Min: 200px<br>Max: 1fr</div>
+        <div class="item">Min: 200px<br>Max: 1fr</div>
+        <div class="item">Min: 200px<br>Max: 1fr</div>
+    </div>
+</body>
+
+</html>
